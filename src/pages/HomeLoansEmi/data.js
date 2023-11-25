@@ -79,20 +79,16 @@ export const loanInfo = {
           value: 1
         }
       ]
-    },
-    {
-      key: "emi",
-      label: "Monthly Payment (EMI)",
-      // type: "number",
-      placeholder: "Fill other fields to calculate EMI",
-      isGenerated: true,
-      formula: (blockData) => {
-        const { loanAmount, interestRate, loanTenure, paymentFrequency } = blockData
-        console.log("loanAmount, interestRate, loanTenure", loanAmount, interestRate, loanTenure, paymentFrequency)
-        return calculateLoanPayment(parseInt(loanAmount), parseInt(interestRate), parseInt(loanTenure), paymentFrequency)
-      }
     }
-  ]
+  ],
+  result: {
+    label: "Monthly Payment (EMI)",
+    formula: (blockData) => {
+      const { loanAmount, interestRate, loanTenure, paymentFrequency } = blockData
+      console.log("loanAmount, interestRate, loanTenure", loanAmount, interestRate, loanTenure, paymentFrequency)
+      return calculateLoanPayment(parseInt(loanAmount), parseInt(interestRate), parseInt(loanTenure), paymentFrequency)
+    }
+  }
 }
 
 // // Example usage
