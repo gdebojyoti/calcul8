@@ -24,11 +24,11 @@ const DataBlock = ({ data }) => {
     setBlockData(updatedBlockData)
   }
 
-  console.log("blockData", blockData)
+  console.log('blockData', blockData)
 
   return (
     <div className='data-block'>
-      <h2>{ title }</h2>
+      <h2>{title}</h2>
 
       <div className='data-block__fields'>
         {
@@ -56,8 +56,8 @@ const Result = ({ data, blockData }) => {
   const { label, formula } = data
   return (
     <div>
-      <h3>{ label }</h3>
-      <div>{ formula(blockData) }</div>
+      <h3>{label}</h3>
+      <div>{formula(blockData)}</div>
     </div>
   )
 }

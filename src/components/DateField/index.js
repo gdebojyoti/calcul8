@@ -7,7 +7,7 @@ const DateField = ({ type, placeholder, isReadOnly, isDisabled, value = '', onCh
 
     onChangeProp(e.target.value)
   }
-  
+
   return (
     <input
       type='date'

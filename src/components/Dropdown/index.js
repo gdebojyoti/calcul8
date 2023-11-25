@@ -7,7 +7,7 @@ const Dropdown = ({ options, value = '', onChange: onChangeProp }) => {
 
     onChangeProp(e.target.value)
   }
-  
+
   return (
     <select
       value={value}

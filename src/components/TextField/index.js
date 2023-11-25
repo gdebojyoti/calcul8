@@ -13,7 +13,7 @@ const TextField = ({ type, placeholder, isReadOnly, isDisabled, value = '', onCh
 
     onChangeProp(e.target.value)
   }
-  
+
   return (
     <input
       // type={type}

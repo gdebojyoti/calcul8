@@ -1,17 +1,17 @@
-export default function calculateLoanPayment(loanAmount, interestRate, termLength, paymentFrequency) {
+export default function calculateLoanPayment (loanAmount, interestRate, termLength, paymentFrequency) {
   // Convert annual interest rate to monthly and decimal
   // const monthlyInterestRate = (interestRate / 100) / 12;
-  const monthlyInterestRate = (interestRate / 100) / paymentFrequency;
+  const monthlyInterestRate = (interestRate / 100) / paymentFrequency
 
   // Convert term length to months
-  const totalPayments = termLength * paymentFrequency;
+  const totalPayments = termLength * paymentFrequency
 
   // Calculate monthly payment (EMI)
   const emi =
     (loanAmount * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, totalPayments)) /
-    (Math.pow(1 + monthlyInterestRate, totalPayments) - 1);
+    (Math.pow(1 + monthlyInterestRate, totalPayments) - 1)
 
-  return emi.toFixed(2); // Round to 2 decimal places
+  return emi.toFixed(2) // Round to 2 decimal places
 }
 
 // export default function calculateLoanPayment(loanType, interestRate, term, loanAmount) {

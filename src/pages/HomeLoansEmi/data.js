@@ -2,90 +2,90 @@ import calculateLoanPayment from 'utils/calculateLoanPayment'
 import calculateLoanBalance from 'utils/calculateLoanBalance'
 
 export const loanInfo = {
-  title: "Loan Information",
+  title: 'Loan Information',
   fields: [
     {
-      key: "loanAmount",
-      label: "Loan Amount",
-      type: "number",
-      placeholder: "Enter loan amount",
+      key: 'loanAmount',
+      label: 'Loan Amount',
+      type: 'number',
+      placeholder: 'Enter loan amount',
       defaultValue: 10000000
     },
     {
-      key: "interestRate",
-      label: "Interest Rate",
-      type: "number",
-      placeholder: "Enter interest rate",
+      key: 'interestRate',
+      label: 'Interest Rate',
+      type: 'number',
+      placeholder: 'Enter interest rate',
       defaultValue: 8
     },
     {
-      key: "loanTenure",
-      label: "Loan Tenure",
-      type: "number",
-      placeholder: "Enter loan tenure",
+      key: 'loanTenure',
+      label: 'Loan Tenure',
+      type: 'number',
+      placeholder: 'Enter loan tenure',
       defaultValue: 20
     },
     {
-      key: "firstPaymentDate",
-      label: "First Payment Date",
-      type: "date",
-      placeholder: "Enter first payment date"
+      key: 'firstPaymentDate',
+      label: 'First Payment Date',
+      type: 'date',
+      placeholder: 'Enter first payment date'
     },
     {
-      key: "compoundPeriod",
-      label: "Compound Period",
-      type: "dropdown",
-      placeholder: "Select compound period",
+      key: 'compoundPeriod',
+      label: 'Compound Period',
+      type: 'dropdown',
+      placeholder: 'Select compound period',
       options: [
         {
-          label: "Monthly",
-          value: "monthly"
+          label: 'Monthly',
+          value: 'monthly'
         },
         {
-          label: "Quarterly",
-          value: "quarterly"
+          label: 'Quarterly',
+          value: 'quarterly'
         },
         {
-          label: "Half Yearly",
-          value: "halfYearly"
+          label: 'Half Yearly',
+          value: 'halfYearly'
         },
         {
-          label: "Yearly",
-          value: "yearly"
+          label: 'Yearly',
+          value: 'yearly'
         }
       ]
     },
     {
-      key: "paymentFrequency",
-      label: "Payment Frequency",
-      type: "dropdown",
-      placeholder: "Select payment frequency",
+      key: 'paymentFrequency',
+      label: 'Payment Frequency',
+      type: 'dropdown',
+      placeholder: 'Select payment frequency',
       defaultValue: 12,
       options: [
         {
-          label: "Monthly",
+          label: 'Monthly',
           value: 12
         },
         {
-          label: "Quarterly",
+          label: 'Quarterly',
           value: 4
         },
         {
-          label: "Half Yearly",
+          label: 'Half Yearly',
           value: 2
         },
         {
-          label: "Yearly",
+          label: 'Yearly',
           value: 1
         }
       ]
     }
   ],
   result: {
-    label: "Monthly Payment (EMI)",
+    label: 'Monthly Payment (EMI)',
     formula: (blockData) => {
       const { loanAmount, interestRate, loanTenure, paymentFrequency } = blockData
-      console.log("loanAmount, interestRate, loanTenure", loanAmount, interestRate, loanTenure, paymentFrequency)
+      console.log('loanAmount, interestRate, loanTenure', loanAmount, interestRate, loanTenure, paymentFrequency)
       return calculateLoanPayment(parseInt(loanAmount), parseInt(interestRate), parseInt(loanTenure), paymentFrequency)
     }
   }

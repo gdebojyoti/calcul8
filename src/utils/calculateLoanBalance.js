@@ -1,6 +1,6 @@
 import calculateLoanPayment from 'utils/calculateLoanPayment'
 
-export default function calculateLoanBalance(loanAmount, interestRate, termLength, paymentFrequency, numberOfYears) {
+export default function calculateLoanBalance (loanAmount, interestRate, termLength, paymentFrequency, numberOfYears) {
   const monthlyInterestRate = (interestRate / 100) / 12
   const numberOfPayments = numberOfYears * paymentFrequency
 

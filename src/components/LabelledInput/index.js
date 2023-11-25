@@ -6,7 +6,7 @@ import Dropdown from 'components/Dropdown'
 
 const LabelledInput = ({ label, type, ...rest }) => {
   let Field = null
-  
+
   switch (type) {
     case 'dropdown':
       Field = Dropdown
@@ -22,7 +22,7 @@ const LabelledInput = ({ label, type, ...rest }) => {
 
   return (
     <label>
-      <span>{ label }</span>
+      <span>{label}</span>
       <Field {...rest} />
     </label>
   )
