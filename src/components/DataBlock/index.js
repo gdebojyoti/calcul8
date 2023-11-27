@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
 import LabelledInput from 'components/LabelledInput'
 
 import './style.css'
 
-const DataBlock = ({ data }) => {
+const DataBlock = ({ data, blockData, setBlockData }) => {
   const { title, fields, result } = data
-
-  const [blockData, setBlockData] = useState({})
 
   // update blockData on change of fields
   useEffect(() => {
@@ -20,7 +18,14 @@ const DataBlock = ({ data }) => {
 
   const onChange = (key, value) => {
     const updatedBlockData = { ...blockData }
-    updatedBlockData[key] = value
+    const { type } = fields.find(field => field.key === key) || {}
+    switch (type) {
+      case 'number':
+        updatedBlockData[key] = parseInt(value)
+        break
+      default:
+        updatedBlockData[key] = value
+    }
     setBlockData(updatedBlockData)
   }
 

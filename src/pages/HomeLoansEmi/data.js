@@ -1,5 +1,4 @@
 import calculateLoanPayment from 'utils/calculateLoanPayment'
-import calculateLoanBalance from 'utils/calculateLoanBalance'
 
 export const loanInfo = {
   title: 'Loan Information',
@@ -23,13 +22,14 @@ export const loanInfo = {
       label: 'Loan Tenure',
       type: 'number',
       placeholder: 'Enter loan tenure',
-      defaultValue: 20
+      defaultValue: 5
     },
     {
       key: 'firstPaymentDate',
       label: 'First Payment Date',
       type: 'date',
-      placeholder: 'Enter first payment date'
+      placeholder: 'Enter first payment date',
+      defaultValue: '2023-11-14'
     },
     {
       key: 'compoundPeriod',
@@ -90,29 +90,3 @@ export const loanInfo = {
     }
   }
 }
-
-// // Example usage
-// const loanType = "Acc Bi-Weekly"; // "Payment Frequency"
-// const interestRate = 0.05; // 5%
-// const term = 5; // 5 years
-// const loanAmount = 10000;
-
-// const result = calculateLoanPayment(loanType, interestRate, term, loanAmount);
-// console.log(result);
-
-// Example usage:
-const loanAmount = 10000000
-const interestRate = 8 // 5%
-const termLength = 20 // 3 years
-const paymentFrequency = 12 // Monthly payments
-const numberOfYears = 5
-
-const monthlyPayment = calculateLoanPayment(loanAmount, interestRate, termLength, paymentFrequency)
-console.log(`Monthly Payment (EMI): $${monthlyPayment}`)
-
-// Example usage:
-const loanDetails = calculateLoanBalance(loanAmount, interestRate, termLength, paymentFrequency, numberOfYears)
-
-console.log(`Interest Paid: $${loanDetails.interestPaid}`)
-console.log(`Principal Paid: $${loanDetails.principalPaid}`)
-console.log(`Outstanding Balance: $${loanDetails.outstandingBalance}`)
