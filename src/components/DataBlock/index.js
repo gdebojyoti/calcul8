@@ -21,7 +21,7 @@ const DataBlock = ({ data, blockData, setBlockData }) => {
     const { type } = fields.find(field => field.key === key) || {}
     switch (type) {
       case 'number':
-        updatedBlockData[key] = parseInt(value)
+        updatedBlockData[key] = parseFloat(value)
         break
       default:
         updatedBlockData[key] = value

@@ -1,7 +1,7 @@
 import calculateLoanPayment from 'utils/calculateLoanPayment'
 
 export default function generateAmortizationSchedule (loanAmount, interestRate, termLength, paymentFrequency, firstPaymentDate) {
-  const monthlyPayment = parseInt(calculateLoanPayment(loanAmount, interestRate, termLength, paymentFrequency))
+  const monthlyPayment = parseFloat(calculateLoanPayment(loanAmount, interestRate, termLength, paymentFrequency))
   const monthlyInterestRate = (interestRate / 100) / 12
   const totalPayments = termLength * paymentFrequency
 

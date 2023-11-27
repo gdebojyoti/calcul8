@@ -86,7 +86,7 @@ export const loanInfo = {
     formula: (blockData) => {
       const { loanAmount, interestRate, loanTenure, paymentFrequency } = blockData
       console.log('loanAmount, interestRate, loanTenure', loanAmount, interestRate, loanTenure, paymentFrequency)
-      return calculateLoanPayment(parseInt(loanAmount), parseInt(interestRate), parseInt(loanTenure), paymentFrequency)
+      return calculateLoanPayment(parseFloat(loanAmount), parseFloat(interestRate), parseFloat(loanTenure), paymentFrequency)
     }
   }
 }
