@@ -4,8 +4,8 @@ import LabelledInput from 'components/LabelledInput'
 
 import './style.css'
 
-const DataBlock = ({ data, blockData, setBlockData }) => {
-  const { title, fields, result } = data
+const DataBlock = ({ data, blockData, setBlockData, resultsArg }) => {
+  const { title, fields, results } = data
 
   // update blockData on change of fields
   useEffect(() => {
@@ -29,8 +29,6 @@ const DataBlock = ({ data, blockData, setBlockData }) => {
     setBlockData(updatedBlockData)
   }
 
-  console.log('blockData', blockData)
-
   return (
     <div className='data-block'>
       <h2>{title}</h2>
@@ -51,7 +49,7 @@ const DataBlock = ({ data, blockData, setBlockData }) => {
         }
       </div>
 
-      <Result data={result} blockData={blockData} />
+      {results(resultsArg).map((result, index) => <Result key={index} data={result} blockData={blockData} />)}
     </div>
   )
 }

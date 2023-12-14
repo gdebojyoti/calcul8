@@ -11,7 +11,7 @@ export default function calculateLoanPayment (loanAmount, interestRate, termLeng
     (loanAmount * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, totalPayments)) /
     (Math.pow(1 + monthlyInterestRate, totalPayments) - 1)
 
-  return emi.toFixed(2) // Round to 2 decimal places
+  return parseFloat(emi.toFixed(2)) // Round to 2 decimal places
 }
 
 // export default function calculateLoanPayment(loanType, interestRate, term, loanAmount) {

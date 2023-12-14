@@ -1,4 +1,5 @@
 import calculateLoanPayment from 'utils/calculateLoanPayment'
+import { calculateTotalPrepayments, calculateInterestSaved } from 'utils'
 
 export const loanInfo = {
   title: 'Loan Information',
@@ -8,7 +9,7 @@ export const loanInfo = {
       label: 'Loan Amount',
       type: 'number',
       placeholder: 'Enter loan amount',
-      defaultValue: 10000000
+      defaultValue: 100000
     },
     {
       key: 'interestRate',
@@ -22,7 +23,7 @@ export const loanInfo = {
       label: 'Loan Tenure',
       type: 'number',
       placeholder: 'Enter loan tenure',
-      defaultValue: 5
+      defaultValue: 1
     },
     {
       key: 'firstPaymentDate',
@@ -81,12 +82,74 @@ export const loanInfo = {
       ]
     }
   ],
-  result: {
-    label: 'Monthly Payment (EMI)',
-    formula: (blockData) => {
-      const { loanAmount, interestRate, loanTenure, paymentFrequency } = blockData
-      console.log('loanAmount, interestRate, loanTenure', loanAmount, interestRate, loanTenure, paymentFrequency)
-      return calculateLoanPayment(parseFloat(loanAmount), parseFloat(interestRate), parseFloat(loanTenure), paymentFrequency)
+  results: data => [
+    {
+      label: 'Monthly Payment (EMI)',
+      formula: () => {
+        const { loanAmount, interestRate, loanTenure, paymentFrequency } = data
+        return calculateLoanPayment(parseFloat(loanAmount), parseFloat(interestRate), parseFloat(loanTenure), paymentFrequency)
+      }
     }
-  }
+  ]
 }
+
+export const prepaymentInfo = {
+  title: 'Prepayment',
+  fields: [
+    {
+      key: 'startAt',
+      label: 'Start at installment number',
+      type: 'number',
+      placeholder: 'Enter installment number',
+      defaultValue: 1
+    },
+    {
+      key: 'prepaymentAmount',
+      label: 'Prepayment Amount',
+      type: 'number',
+      placeholder: 'Enter prepayment amount',
+      defaultValue: 10000
+    },
+    {
+      key: 'prepaymentInterval',
+      label: 'Prepayment Interval',
+      type: 'number',
+      placeholder: 'Enter prepayment interval',
+      defaultValue: 2
+    },
+    {
+      key: 'additionalAnnualPrepayment',
+      label: 'Additional Annual Prepayment',
+      type: 'number',
+      placeholder: 'Enter additional annual prepayment'
+      // defaultValue: 1000
+    }
+  ],
+  results: data => [
+    {
+      label: 'Total Prepayments',
+      formula: () => {
+        const { loanTenure, paymentFrequency, startAt, prepaymentAmount, prepaymentInterval, additionalAnnualPrepayment } = data
+
+        const totalPrepayments = calculateTotalPrepayments(startAt, prepaymentAmount, prepaymentInterval, additionalAnnualPrepayment, loanTenure, paymentFrequency)
+
+        return totalPrepayments
+      }
+    },
+    {
+      label: 'Interest Saved',
+      formula: () => {
+        const { loanAmount, interestRate, loanTenure, paymentFrequency, startAt, prepaymentAmount, prepaymentInterval, additionalAnnualPrepayment } = data
+
+        const totalPrepayments = calculateTotalPrepayments(startAt, prepaymentAmount, prepaymentInterval, additionalAnnualPrepayment, loanTenure, paymentFrequency)
+
+        // return calculateInterestSaved(loanAmount, interestRate, loanTenure, paymentFrequency, totalPrepayments)
+        const interestSaved = calculateInterestSaved(loanAmount, interestRate, loanTenure, paymentFrequency, totalPrepayments, prepaymentAmount, prepaymentInterval, startAt, additionalAnnualPrepayment)
+
+        return interestSaved
+      }
+    }
+  ]
+}
+
+// Can you now please update the `generateAmortizationSchedule` method to include

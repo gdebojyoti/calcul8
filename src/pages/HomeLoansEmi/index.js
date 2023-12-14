@@ -5,41 +5,51 @@ import AmortizationSchedule from 'components/AmortizationSchedule'
 import calculateLoanPayment from 'utils/calculateLoanPayment'
 import calculateLoanBalance from 'utils/calculateLoanBalance'
 import generateAmortizationSchedule from 'utils/generateAmortizationSchedule'
+import { calculateTotalPrepayments } from 'utils'
 
-import { loanInfo } from './data'
+import { loanInfo, prepaymentInfo } from './data'
 
 const HomeLoansEmi = () => {
-  const [blockData, setBlockData] = useState({})
+  const [loanInfoBlockData, setLoanInfoBlockData] = useState({})
+  const [prepaymentInfoBlockData, setPrepaymentInfoBlockData] = useState({})
   const [amortizationSchedule, setAmortizationSchedule] = useState([])
 
-  // generate amortization schedule whenever `blockData` changes
+  // generate amortization schedule whenever `loanInfoBlockData` changes
   useEffect(() => {
-    console.log('blockData inside HL', blockData)
+    const { loanAmount, interestRate, loanTenure, paymentFrequency, firstPaymentDate } = loanInfoBlockData || {}
 
-    const { loanAmount, interestRate, loanTenure, paymentFrequency, firstPaymentDate } = blockData
-    console.log('loanAmount, interestRate, loanTenure', loanAmount, interestRate, loanTenure, paymentFrequency, firstPaymentDate)
+    const { startAt, prepaymentAmount, prepaymentInterval, additionalAnnualPrepayment } = prepaymentInfoBlockData || {}
 
+    const totalPrepayments = calculateTotalPrepayments(startAt, prepaymentAmount, prepaymentInterval, additionalAnnualPrepayment, loanTenure, paymentFrequency)
     const monthlyPayment = calculateLoanPayment(loanAmount, interestRate, loanTenure, paymentFrequency)
-    console.log(`Monthly Payment (EMI): $${monthlyPayment}`)
+    console.log(`Monthly Payment (EMI): ${totalPrepayments} ${monthlyPayment}`)
 
     // Example usage:
     const numberOfYears = 4
     const loanDetails = calculateLoanBalance(loanAmount, interestRate, loanTenure, paymentFrequency, numberOfYears)
+    console.log('Loan detatils', loanDetails)
 
-    console.log(`Interest Paid: $${loanDetails.interestPaid}`)
-    console.log(`Principal Paid: $${loanDetails.principalPaid}`)
-    console.log(`Outstanding Balance: $${loanDetails.outstandingBalance}`)
-
-    const amortizationSchedule = generateAmortizationSchedule(loanAmount, interestRate, loanTenure, paymentFrequency, firstPaymentDate)
-    console.log('amortizationSchedule inside HL', amortizationSchedule)
+    const amortizationSchedule = generateAmortizationSchedule(loanAmount, interestRate, loanTenure, paymentFrequency, firstPaymentDate, prepaymentAmount, prepaymentInterval, startAt)
     setAmortizationSchedule(amortizationSchedule)
-  }, [blockData])
+  }, [loanInfoBlockData, prepaymentInfoBlockData])
 
   return (
     <div>
       <h1>Home Loans EMI</h1>
 
-      <DataBlock data={loanInfo} blockData={blockData} setBlockData={setBlockData} />
+      <DataBlock
+        data={loanInfo}
+        blockData={loanInfoBlockData}
+        setBlockData={setLoanInfoBlockData}
+        resultsArg={loanInfoBlockData}
+      />
+      <DataBlock
+        data={prepaymentInfo}
+        blockData={prepaymentInfoBlockData}
+        setBlockData={setPrepaymentInfoBlockData}
+        resultsArg={{ ...loanInfoBlockData, ...prepaymentInfoBlockData }}
+      />
+
       <AmortizationSchedule data={amortizationSchedule} />
     </div>
   )
