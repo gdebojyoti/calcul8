@@ -1,6 +1,18 @@
 import calculateLoanPayment from 'utils/calculateLoanPayment'
 
-// create a table that shows the payment schedule for the loan
+/**
+ * Generates an amortization schedule for a loan.
+ *
+ * @param {number} loanAmount - The amount of the loan.
+ * @param {number} interestRate - The interest rate for the loan.
+ * @param {number} termLength - The length of the loan term in years.
+ * @param {number} paymentFrequency - The number of payments per year.
+ * @param {Date} firstPaymentDate - The date of the first payment.
+ * @param {number} prepaymentAmount - The amount of prepayment to be deducted.
+ * @param {number} prepaymentInterval - The interval at which prepayments are made.
+ * @param {number} startAt - The installment number at which prepayments start.
+ * @returns {Array} - The amortization schedule as an array of objects.
+ */
 export default function generateAmortizationSchedule (loanAmount, interestRate, termLength, paymentFrequency, firstPaymentDate, prepaymentAmount, prepaymentInterval, startAt) {
   const monthlyPayment = calculateLoanPayment(loanAmount, interestRate, termLength, paymentFrequency)
   const monthlyInterestRate = (interestRate / 100) / 12
@@ -44,7 +56,7 @@ export default function generateAmortizationSchedule (loanAmount, interestRate, 
       paymentAmount: effectivePaymentAmount.toFixed(2),
       interestPaid: interestPayment.toFixed(2),
       principalPaid: principalPayment.toFixed(2),
-      prepaymentAmount: (i >= startAt && (i - startAt) % prepaymentInterval === 0 && i < totalPayments && (outstandingBalance - prepaymentAmount) > 0) ? prepaymentAmount.toFixed(2) : '',
+      prepaymentAmount: shouldDeductPrepayment ? prepaymentAmount.toFixed(2) : '',
       remainingBalance: outstandingBalance.toFixed(2)
     })
   }
