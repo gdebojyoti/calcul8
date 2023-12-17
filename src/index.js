@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { SpeedInsights } from '@vercel/speed-insights/react'
+
 import './index.css'
 // import App from './App';
 import HomeLoansEmi from 'pages/HomeLoansEmi'
@@ -9,6 +11,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
     <HomeLoansEmi />
+    <SpeedInsights />
   </React.StrictMode>
 )
 
