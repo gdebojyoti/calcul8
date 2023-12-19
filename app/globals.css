@@ -1,0 +1,6 @@
+:root {
+  --theme-color: #ff0000;
+
+  /* derived variables */
+  --link-color: var(--theme-color);
+}

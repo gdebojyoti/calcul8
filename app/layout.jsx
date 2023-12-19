@@ -1,11 +1,15 @@
+import Link from '../components/Link'
+
+import './globals.css'
+
 const RootLayout = ({ children }) => {
   return (
     <html lang='en'>
       <body>
         <nav>
           <ul>
-            <li><a href='/'>Home</a></li>
-            <li><a href='/emi'>Sample page</a></li>
+            <li><Link href='/'>Home</Link></li>
+            <li><Link href='/emi'>Sample page</Link></li>
           </ul>
         </nav>
         {children}
