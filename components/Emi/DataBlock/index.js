@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import LabelledInput from 'components/LabelledInput'
+import LabelledInput from 'components/Emi/LabelledInput'
 
 import './style.css'
 

@@ -1,4 +1,4 @@
-import calculateLoanPayment from 'utils/calculateLoanPayment'
+import calculateLoanPayment from 'utils/emi/calculateLoanPayment'
 
 /**
  * Generates an amortization schedule for a loan.

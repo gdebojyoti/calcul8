@@ -1,4 +1,4 @@
-import calculateLoanPayment from 'utils/calculateLoanPayment'
+import calculateLoanPayment from 'utils/emi/calculateLoanPayment'
 
 export default function calculateLoanBalance (loanAmount, interestRate, termLength, paymentFrequency, numberOfYears) {
   try {

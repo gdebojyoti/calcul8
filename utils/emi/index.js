@@ -1,4 +1,4 @@
-import calculateLoanPayment from 'utils/calculateLoanPayment'
+import calculateLoanPayment from 'utils/emi/calculateLoanPayment'
 
 export function calculateTotalPrepayments (startAt, prepaymentAmount, prepaymentInterval, additionalAnnualPrepayment, termLength, paymentFrequency) {
   let totalPrepayments = 0

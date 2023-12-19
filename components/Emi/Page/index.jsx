@@ -2,12 +2,12 @@
 
 import React, { useEffect, useState } from 'react'
 
-import DataBlock from 'components/DataBlock'
-import AmortizationSchedule from 'components/AmortizationSchedule'
-import calculateLoanPayment from 'utils/calculateLoanPayment'
-import calculateLoanBalance from 'utils/calculateLoanBalance'
-import generateAmortizationSchedule from 'utils/generateAmortizationSchedule'
-import { calculateTotalPrepayments } from 'utils'
+import DataBlock from 'components/Emi/DataBlock'
+import AmortizationSchedule from 'components/Emi/AmortizationSchedule'
+import calculateLoanPayment from 'utils/emi/calculateLoanPayment'
+import calculateLoanBalance from 'utils/emi/calculateLoanBalance'
+import generateAmortizationSchedule from 'utils/emi/generateAmortizationSchedule'
+import { calculateTotalPrepayments } from 'utils/emi'
 
 import { loanInfo, prepaymentInfo } from './data'
 

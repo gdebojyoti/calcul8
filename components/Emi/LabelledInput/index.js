@@ -1,8 +1,8 @@
 import React from 'react'
 
-import TextField from 'components/TextField'
-import DateField from 'components/DateField'
-import Dropdown from 'components/Dropdown'
+import TextField from 'components/Emi/TextField'
+import DateField from 'components/Emi/DateField'
+import Dropdown from 'components/Emi/Dropdown'
 
 const LabelledInput = ({ label, type, ...rest }) => {
   let Field = null

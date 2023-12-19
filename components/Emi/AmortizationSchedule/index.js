@@ -1,6 +1,6 @@
 import React from 'react'
 
-import formatDate from 'utils/formatDate'
+import formatDate from 'utils/emi/formatDate'
 
 import './style.css'
 

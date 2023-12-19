@@ -1,4 +1,4 @@
-import HomeLoansEmi from 'pages/HomeLoansEmi'
+import HomeLoansEmi from 'components/Emi/Page'
 
 const Home = () => {
   return (
