@@ -6,4 +6,9 @@ const Emi = () => {
   )
 }
 
+export const metadata = {
+  title: 'EMI | Project CALCUL8',
+  description: 'This is a sample page, for now'
+}
+
 export default Emi
