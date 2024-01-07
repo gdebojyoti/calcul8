@@ -1,8 +1,8 @@
 import React from 'react'
 
-import TextField from 'components/common/TextField'
-import DateField from 'components/common/DateField'
-import Dropdown from 'components/common/DropdownField'
+import TextField from 'components/common/InputField/TextField'
+import DateField from 'components/common/InputField/DateField'
+import Dropdown from 'components/common/InputField/DropdownField'
 
 import './style.css'
 
