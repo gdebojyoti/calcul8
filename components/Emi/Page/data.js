@@ -94,7 +94,7 @@ export const loanInfo = {
 }
 
 export const prepaymentInfo = {
-  title: 'Prepayment',
+  title: 'Pre-payment details',
   fields: [
     {
       key: 'startAt',
