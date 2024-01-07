@@ -8,16 +8,36 @@
   color: var(--placeholder-text-color);
   background-color: var(--input-bg-color);
   border-radius: 20px;
+  cursor: text;
+}
+.input-field:focus-within, .input-field--has-value {
+  /* identifies if the user is focussed on the input field; or if the input field has value */
+  .input-field__label {
+    transform: scale(calc(12 / 14)) translateY(-12px);
+  }
+  .input::placeholder {
+    opacity: 0.75;
+  }
+}
+.input-field:focus-within {
+  /* identifies if the user is focussed on the input field */
+  border-bottom-color: var(--theme-color);
 }
 
 .input-field__label {
   position: absolute;
-  top: 10px;
-  font-size: 12px;
+  top: 22px;
+  font-size: 14px;
   line-height: 150%;
+  transform-origin: left;
+  transition: transform .2s;
 }
 
 .input-field .input {
   width: 100%;
   margin-top: 33px;
+}
+.input-field .input::placeholder {
+  opacity: 0;
+  transition: opacity .2s;
 }

@@ -22,8 +22,11 @@ const InputField = ({ label, type, ...rest }) => {
       break
   }
 
+  const { value } = rest
+  const inputFieldClassName = `input-field ${value ? 'input-field--has-value' : ''}`
+
   return (
-    <label className='input-field'>
+    <label className={inputFieldClassName}>
       <span className='input-field__label'>{label}</span>
       <Field {...rest} />
     </label>
