@@ -21,7 +21,7 @@ const DataBlock = ({ data, blockData, setBlockData, resultsArg }) => {
     const { type } = fields.find(field => field.key === key) || {}
     switch (type) {
       case 'number':
-        updatedBlockData[key] = parseFloat(value)
+        updatedBlockData[key] = (value === '' || typeof value === 'undefined') ? '' : parseFloat(value)
         break
       default:
         updatedBlockData[key] = value
@@ -57,10 +57,12 @@ const DataBlock = ({ data, blockData, setBlockData, resultsArg }) => {
 // TODO: move this to a separate file
 const Result = ({ data, blockData }) => {
   const { label, formula } = data
+  const result = formula(blockData)
+
   return (
     <div>
       <h3>{label}</h3>
-      <div>{formula(blockData)}</div>
+      <div>{isNaN(result) ? 'N/A' : result}</div>
     </div>
   )
 }
