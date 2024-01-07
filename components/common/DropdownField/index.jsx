@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Dropdown = ({ options, value = '', onChange: onChangeProp }) => {
+const DropdownField = ({ options, value = '', onChange: onChangeProp }) => {
   const onChange = (e) => {
     e.stopPropagation()
     e.preventDefault()
@@ -25,4 +25,4 @@ const Dropdown = ({ options, value = '', onChange: onChangeProp }) => {
   )
 }
 
-export default Dropdown
+export default DropdownField

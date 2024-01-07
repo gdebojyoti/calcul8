@@ -1,5 +1,7 @@
 import React from 'react'
 
+import './style.css'
+
 const TextField = ({ type, placeholder, isReadOnly, isDisabled, value = '', onChange: onChangeProp }) => {
   const onChange = (e) => {
     e.stopPropagation()
@@ -17,6 +19,7 @@ const TextField = ({ type, placeholder, isReadOnly, isDisabled, value = '', onCh
   return (
     <input
       // type={type}
+      className='input input--text-field'
       type='text'
       placeholder={placeholder}
       value={value}

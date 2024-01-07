@@ -36,24 +36,32 @@ const HomeLoansEmi = () => {
   }, [loanInfoBlockData, prepaymentInfoBlockData])
 
   return (
-    <div>
-      <h1>Home Loans EMI</h1>
+    <>
+      <h1>EMI Calculator: Calculate Your Monthly Payments</h1>
 
-      <DataBlock
-        data={loanInfo}
-        blockData={loanInfoBlockData}
-        setBlockData={setLoanInfoBlockData}
-        resultsArg={loanInfoBlockData}
-      />
-      <DataBlock
-        data={prepaymentInfo}
-        blockData={prepaymentInfoBlockData}
-        setBlockData={setPrepaymentInfoBlockData}
-        resultsArg={{ ...loanInfoBlockData, ...prepaymentInfoBlockData }}
-      />
+      <p className='section-content'>
+        Welcome to our EMI (Equated Monthly Installment) calculator – your handy tool to estimate your monthly payments for loans
+      </p>
 
-      <AmortizationSchedule data={amortizationSchedule} />
-    </div>
+      <section className='section'>
+        <h2>EMI Calculator</h2>
+
+        <DataBlock
+          data={loanInfo}
+          blockData={loanInfoBlockData}
+          setBlockData={setLoanInfoBlockData}
+          resultsArg={loanInfoBlockData}
+        />
+        <DataBlock
+          data={prepaymentInfo}
+          blockData={prepaymentInfoBlockData}
+          setBlockData={setPrepaymentInfoBlockData}
+          resultsArg={{ ...loanInfoBlockData, ...prepaymentInfoBlockData }}
+        />
+
+        <AmortizationSchedule data={amortizationSchedule} />
+      </section>
+    </>
   )
 }
 

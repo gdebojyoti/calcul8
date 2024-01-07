@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import LabelledInput from 'components/Emi/LabelledInput'
+import InputField from 'components/common/InputField'
 
 import './style.css'
 
@@ -31,14 +31,14 @@ const DataBlock = ({ data, blockData, setBlockData, resultsArg }) => {
 
   return (
     <div className='data-block'>
-      <h2>{title}</h2>
+      <h3 className='section-content'>{title}</h3>
 
       <div className='data-block__fields'>
         {
           fields.map((field) => {
             const { key, ...rest } = field
             return (
-              <LabelledInput
+              <InputField
                 key={key}
                 value={blockData[key]}
                 onChange={value => onChange(key, value)}

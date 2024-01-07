@@ -1,0 +1,9 @@
+.input {
+  border: none;
+  font-size: 14px;
+  line-height: 150%;
+  font-weight: 700;
+  color: var(--input-text-color);
+  background-color: transparent;
+  outline: none;
+}
